@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+sqlalchemy
+qdrant-client
+redis
+langchain-core
+langchain-openai
+sentence-transformers
+pypdf
+python-multipart
+pytest
+httpx
