@@ -2,6 +2,7 @@ from sqlalchemy import Column, String, Integer, DateTime, Text, ForeignKey
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from app.database.connection import Base
+from sqlalchemy.sql import func
 
 class DocumentMeta(Base):
     __tablename__ = "documents"
@@ -27,10 +28,39 @@ class ChunkMeta(Base):
 class InterviewBooking(Base):
     __tablename__ = "interview_bookings"
 
-    id = Column(String, primary_key=True, index=True)
-    session_id = Column(String, index=True, nullable=False)
-    name = Column(String, nullable=False)
-    email = Column(String, nullable=False)
-    date = Column(String, nullable=False)
-    time = Column(String, nullable=False)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    id = Column(
+        String,
+        primary_key=True,
+        default=lambda: str(uuid.uuid4())
+    )
+
+    session_id = Column(
+        String,
+        nullable=False,
+        index=True
+    )
+
+    name = Column(
+        String,
+        nullable=False
+    )
+
+    email = Column(
+        String,
+        nullable=False
+    )
+
+    date = Column(
+        String,
+        nullable=False
+    )
+
+    time = Column(
+        String,
+        nullable=False
+    )
+
+    created_at = Column(
+        DateTime,
+        server_default=func.now()
+    )

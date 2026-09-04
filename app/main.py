@@ -21,4 +21,4 @@ app.include_router(chat.router)
 
 @app.get("/")
 def root():
-    return {"status": "ok", "message": "Palm Mind AI RAG API running smoothly"}
+    return {"status": "ok", "message": "Hello this is RAG application backend!"}

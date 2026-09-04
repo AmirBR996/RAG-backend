@@ -2,6 +2,7 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     GROQ_API_KEY: str = "api-key-here"
+    GROQ_MODEL: str = "openai/gpt-oss-20b"
     REDIS_HOST: str = "localhost"
     REDIS_PORT: int = 6379
     QDRANT_HOST: str = "localhost"

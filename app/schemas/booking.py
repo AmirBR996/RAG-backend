@@ -1,14 +1,17 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
+from typing import Optional
+
 
 class BookingSchema(BaseModel):
-    name: str
-    email: EmailStr
-    date: str
-    time: str
+    name: Optional[str] = None
+    email: Optional[str] = None
+    date: Optional[str] = None
+    time: Optional[str] = None
 
-class BookingResponse(BookingSchema):
-    id: str
-    session_id: str
 
-    class Config:
-        from_attributes = True
+class BookingExtraction(BaseModel):
+    booking_intent: bool = False
+    name: Optional[str] = None
+    email: Optional[str] = None
+    date: Optional[str] = None
+    time: Optional[str] = None
