@@ -1,6 +1,5 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-
 from app.database.connection import get_db
 from app.schemas.chat import ChatRequest
 from app.services.rag import custom_rag_query

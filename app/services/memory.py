@@ -1,24 +1,34 @@
-import redis
 import json
-from typing import List, Dict
+import redis
+
 from app.config import settings
 
+
 class RedisMemoryService:
+
     def __init__(self):
-        self.redis_client = redis.Redis(
-            host=settings.REDIS_HOST, 
-            port=settings.REDIS_PORT, 
+        self.redis = redis.Redis(
+            host=settings.REDIS_HOST,
+            port=settings.REDIS_PORT,
             decode_responses=True
         )
 
     def add_message(self, session_id: str, role: str, content: str):
         key = f"chat_history:{session_id}"
-        message = json.dumps({"role": role, "content": content})
-        self.redis_client.rpush(key, message)
 
-    def get_history(self, session_id: str, limit: int = 10) -> List[Dict[str, str]]:
+        message = {
+            "role": role,
+            "content": content
+        }
+
+        self.redis.rpush(key, json.dumps(message))
+
+    def get_history(self, session_id: str, limit: int = 10):
         key = f"chat_history:{session_id}"
-        raw_messages = self.redis_client.lrange(key, -limit, -1)
-        return [json.loads(msg) for msg in raw_messages]
+
+        messages = self.redis.lrange(key, -limit, -1)
+
+        return [json.loads(message) for message in messages]
+
 
 memory_service = RedisMemoryService()

@@ -11,6 +11,5 @@ class DocumentResponse(BaseModel):
     filename: str
     chunking_strategy: ChunkStrategy
     total_chunks: int
-
     class Config:
         from_attributes = True

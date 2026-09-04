@@ -7,9 +7,9 @@ from app.routes import documents, chat
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
-    title="Palm Mind RAG Backend API",
+    title="RAG Backend API",
     version="1.0.0",
-    description="Backend technical task for AI/ML Intern application"
+    description="Backend for production grade rag"
 )
 
 @app.on_event("startup")
