@@ -48,9 +48,5 @@ Then open http://127.0.0.1:8000/docs for the interactive API docs.
 - `uploads/` — uploaded documents
 - `requirement.txt` — Python dependencies
 
-## Contributing
-Contributions are welcome. Open issues or pull requests for suggestions and bug fixes.
 
-## License
-This project does not include a license file. Add one if you plan to open source it.
 
